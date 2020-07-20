@@ -1,0 +1,6 @@
+hadoop fs -put /home/cloudera/Desktop/NCDC-Weather.txt input
+hadoop jar /home/cloudera/Desktop/MRAvgTemp.jar AvgTemp_5 input output
+hadoop fs -ls output
+hadoop fs -cat output/part-r-00000
+hadoop fs -cat output/part-r-00001
+
