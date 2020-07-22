@@ -20,9 +20,9 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
+// Customize Mapper method, override the cleanup method.
 public class AvgTemp_3 extends Configured implements Tool
 {
-
 	public static class AvgTempMapper extends Mapper<LongWritable, Text, Text, TempPair>
 	{
 		private Map<String, TempPair> pairMap = new HashMap<String, TempPair>();

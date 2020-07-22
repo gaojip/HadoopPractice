@@ -20,6 +20,7 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
+// Add TempPair as an element to count
 public class AvgTemp_2 extends Configured implements Tool
 {
 

@@ -22,9 +22,9 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
+// Add descending order
 public class AvgTemp_4 extends Configured implements Tool
 {
-
 	public static class KeyComparator extends WritableComparator {
 		protected KeyComparator() {
 			super(Text.class, true);

@@ -24,9 +24,14 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
+/**
+ * Add Secondary sort on temperature.
+ * example: 011990-99999	100		1950
+ * 			011990-99999	80		1901
+ * 			012650-99999	120		1960
+ */ 
 public class SortTemp extends Configured implements Tool
 {
-	
 	public static class StationGroupingComparator extends WritableComparator {
 		protected StationGroupingComparator() {
 			super(SortBean.class, true);
@@ -55,6 +60,7 @@ public class SortTemp extends Configured implements Tool
 				String stationID = line.substring(4, 10) + "-" + line.substring(10, 15);
 				sortBean.set(stationID, temp);
 				year.set(lineYear);
+				// Use HashMap to filter duplicate elements
 				if (!(pairMap.containsKey(sortBean.hashCode()) && pairMap.get(sortBean.hashCode()) == lineYear)) {
 					context.write(sortBean, year);
 					pairMap.put(sortBean.hashCode(), lineYear);

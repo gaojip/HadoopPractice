@@ -23,9 +23,9 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
+// Use 2 reducer, less than 1930 and else.
 public class AvgTemp_5 extends Configured implements Tool
 {
-	
 	public static class CustomPartitioner extends Partitioner<Text, TempPair> 
 	{
 		
