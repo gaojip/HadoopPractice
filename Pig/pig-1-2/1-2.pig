@@ -1,0 +1,10 @@
+recpage = LOAD 'pig-1-2/Input/pages.csv' AS (name:chararray, page:chararray);
+recuser = LOAD 'pig-1-2/Input/users.csv' AS (name:chararray, age:int);
+a = FILTER recuser BY (age >= 18) AND (age <= 25);
+b = JOIN a BY $0, recpage BY $0;
+c = GROUP b BY recpage::page;
+d = FOREACH c GENERATE group, COUNT(b);
+e = ORDER d BY $1 DESC;
+top = LIMIT e 5;
+-- dump top;
+STORE top INTO '1-2-output';
